@@ -32,7 +32,8 @@ rm_hw: $(HW_OUT_PATH)
 filt_hw: 
 	if [ -e "./vmod/hw/rams/model" ]; then rm -r ./vmod/hw/rams/model; fi
 	if [ -e ./vmod/hw/rams/synth ]; then rm -r ./vmod/hw/rams/synth; fi
-	python3 ./utils/dep_scan/scan_folder.py -d -j4 -tNV_nvdla $(HW_OUT_PATH)
+	python3 ./utils/dep_scan/scan_folder.py -d -j8 -tNV_nvdla $(HW_OUT_PATH)
+	find ./vmod -name "*.vcp" | xargs rm
 
 $(HW_OUT_PATH):
 	mkdir -p $@
