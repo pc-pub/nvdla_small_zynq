@@ -1,4 +1,5 @@
 .*/
+.git-credentials
 nvdla_*/
 obj_dir/
 *.pyc
