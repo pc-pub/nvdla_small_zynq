@@ -30,7 +30,8 @@ rm_hw: $(HW_OUT_PATH)
 
 .PHONY: filt_hw
 filt_hw: 
-	rm -r ./vmod/hw/rams/model ./vmod/hw/rams/synth
+	if [ -e "./vmod/hw/rams/model" ]; then rm -r ./vmod/hw/rams/model; fi
+	if [ -e ./vmod/hw/rams/synth ]; then rm -r ./vmod/hw/rams/synth; fi
 	python3 ./utils/dep_scan/scan_folder.py -d -j4 -tNV_nvdla $(HW_OUT_PATH)
 
 $(HW_OUT_PATH):
