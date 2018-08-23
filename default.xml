@@ -3,5 +3,6 @@
     <default remote="github" revision="zynq_small" sync-j="4" />
     <project path="nvdla_hw" name="pc-pub/hw" />
     <project path="nvdla_sw" name="pc-pub/sw" />
+    <project path="nvdla_wrapper" name="pc-pub/nvdla_wrapper" />
 </manifest>
 
