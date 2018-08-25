@@ -1,5 +1,5 @@
 
-HW_OUT_PATH = vmod/hw
+HW_OUT_PATH = ${VMOD_OUT_PATH}/hw
 HW_OUT_DIRS = $(shell find $(HW_OUT_PATH) -type d)
 HW_TARGETS = $(foreach dir, $(HW_OUT_DIRS), $(wildcard $(dir)/*.v))
 
@@ -22,18 +22,18 @@ gen_hw:
 	
 .PHONY: cp_hw
 cp_hw: $(HW_OUT_PATH) 
-	cp -rf ./nvdla_hw/outdir/nv_small/vmod/* ./vmod/hw/
+	cp -rf ./nvdla_hw/outdir/nv_small/vmod/* ${HW_OUT_PATH}
 
 .PHONY: rm_hw
 rm_hw: $(HW_OUT_PATH)
-	-rm -r ./vmod/hw/*
+	-rm -r ${HW_OUT_PATH}/*
 
 .PHONY: filt_hw
 filt_hw: 
-	-rm -r ./vmod/hw/rams/model
-	-rm -r ./vmod/hw/rams/synth
+	-rm -r ${HW_OUT_PATH}/rams/model
+	-rm -r ${HW_OUT_PATH}/rams/synth
 	python3 ./utils/dep_scan/scan_folder.py -d -j8 -tNV_nvdla $(HW_OUT_PATH)
-	-find ./vmod -name "*.vcp" | xargs rm
+	-find ${HW_OUT_PATH} -name "*.vcp" | xargs rm
 
 $(HW_OUT_PATH):
 	mkdir -p $@
