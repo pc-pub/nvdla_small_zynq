@@ -17,7 +17,7 @@ def find_files(folder):
             # print('scanning ' + filepath)
             ext = path.splitext(filepath)[1]
             # print(ext)
-            if ext == '.v':
+            if ext == '.v' or ext == '.vlib':
                 srcs.append(filepath)
             elif ext == '.vh':
                 headers.append(filepath)
